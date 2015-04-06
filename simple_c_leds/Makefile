@@ -8,7 +8,6 @@ XXD=xxd
 
 m0prog.h: m0prog.bin
 	$(XXD) --include $^ > $@
-	cp $@ ../drivers/remoteproc/$@
 
 m0prog.bin: test.elf
 	$(CROSS_COMPILE)$(OBJCOPY) -O binary $^ $@
