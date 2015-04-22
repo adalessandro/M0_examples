@@ -8,9 +8,16 @@
 
 int c_entry(void) {
 	unsigned int *gpio_out_p4 = GPIO_OUT_P4;
+
+#if USE_REGS == 1
 	register *gpio_on_p4 = GPIO_ON_P4;
 	register *gpio_off_p4 = GPIO_OFF_P4;
 	register bit = GPIO_7;
+#else
+	unsigned int *gpio_on_p4 = GPIO_ON_P4;
+	unsigned int *gpio_off_p4 = GPIO_OFF_P4;
+	unsigned int bit = GPIO_7;
+#endif
 
 	*gpio_out_p4 = bit; //set gpio direction to out
 	while(1) {
